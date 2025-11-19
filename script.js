@@ -1,4 +1,4 @@
-// ========= GA4 Helper =========
+// ========= Helper Google Analytics 4 =========
 function trackGA4(eventName, params = {}) {
   if (window.gtag) {
     gtag('event', eventName, params);
@@ -90,7 +90,6 @@ function actualizarEstadoVisual(input, esValido, mostrarError) {
 
   campo.classList.remove('valid', 'invalid');
 
-  // limpiamos cualquier icono textual (aunque ahora usamos solo background)
   if (icono) icono.textContent = '';
 
   if (!input.value.trim()) {
@@ -493,7 +492,7 @@ function abrirModalTitulacion(e) {
     titulacionTrigger.setAttribute('aria-expanded', 'true');
   }
   if (titulacionCampo) {
-    titulacionCampo.classList.add('abierto'); // chevron up
+    titulacionCampo.classList.add('abierto');
   }
 
   if (filtroTitulacionesInput) {
@@ -577,7 +576,7 @@ function seleccionarTitulacion(valor) {
   const msg = document.getElementById('error-titulacion');
   if (msg) msg.style.display = 'none';
 
-  // Disparar GA4 asociado al hidden
+  // GA4
   titulacionHiddenInput.dispatchEvent(new Event('change'));
 
   cerrarModalTitulacion();
