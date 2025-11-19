@@ -1,0 +1,622 @@
+/* Reset básico */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Roboto', sans-serif;
+  color: #000000;
+  background-color: #ffffff;
+}
+
+.contenedor-principal {
+  min-height: 100vh;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  padding: 24px;
+}
+
+.formulario {
+  width: 100%;
+  max-width: 540px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* Título y subtítulo */
+.form-titulo {
+  font-family: 'Roboto', sans-serif;
+  font-weight: 300; /* Roboto Light */
+  font-size: 36px;
+  margin: 0;
+}
+
+.form-subtitulo {
+  font-family: 'Roboto', sans-serif;
+  font-weight: 300;
+  font-size: 18px;
+  margin: 0;
+}
+
+/* 1. Perfil */
+.campo-perfil {
+  display: flex;
+  align-items: center;
+  font-size: 16px;
+}
+
+.campo-perfil-label {
+  margin-right: 10px;
+}
+
+.opciones-perfil {
+  display: inline-flex;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.opcion-perfil {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 16px;
+}
+
+.opcion-perfil input[type="radio"] {
+  accent-color: #008000;
+}
+
+.opcion-perfil input[type="radio"]:checked + span {
+  color: #008000;
+}
+
+/* Campos genéricos */
+.campo {
+  font-size: 16px;
+}
+
+/* === Campos de texto con etiqueta flotante === */
+.campo.flotante .campo-control {
+  position: relative;
+  height: 48px;
+}
+
+.campo.flotante input {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: 4px;
+  border: 1px solid #b3b3b3;
+  background-color: #ffffff;
+  padding: 18px 40px 8px 12px;
+  font-size: 16px;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 400;
+  color: #000000;
+  outline: none;
+}
+
+.campo.flotante input::placeholder {
+  color: transparent;
+}
+
+.campo.flotante label {
+  position: absolute;
+  left: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 16px;
+  color: #000000;
+  pointer-events: none;
+  transition: all 0.18s ease;
+}
+
+.campo.flotante input:focus + label,
+.campo.flotante input:not(:placeholder-shown) + label {
+  top: 4px;
+  transform: translateY(0);
+  font-size: 13px;
+  color: #737373;
+}
+
+.campo.flotante:focus-within input {
+  border-color: #787878;
+  border-width: 2px;
+}
+
+.campo.flotante input:not(:placeholder-shown) {
+  font-weight: 700;
+}
+
+/* Icono validación: usamos SVGs */
+.icono-validacion {
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 16px;
+  height: 16px;
+  pointer-events: none;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+}
+
+/* Estados válidos/invalidos texto: borde + icono */
+.campo.flotante.valid input {
+  border-color: #008000;
+  border-width: 2px;
+}
+
+.campo.flotante.valid .icono-validacion {
+  background-image: url('ok-verde.svg'); /* ✔ SVG verde */
+}
+
+.campo.flotante.invalid input {
+  border-color: #ff0000;
+  border-width: 2px;
+  color: #ff0000;
+}
+
+.campo.flotante.invalid .icono-validacion {
+  background-image: url('ko-rojo.svg');  /* ✖ SVG rojo */
+}
+
+/* Mensajes de error */
+.mensaje-error {
+  display: none;
+  margin-top: 4px;
+  font-size: 14px;
+  color: #ff0000;
+}
+
+.campo.invalid .mensaje-error {
+  display: block;
+}
+
+/* === Selects con etiqueta flotante === */
+.campo-select {
+  display: flex;
+  flex-direction: column;
+}
+
+.campo-control-select {
+  position: relative;
+  height: 48px;
+}
+
+/* Select base */
+.campo-select select {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: 4px;
+  border: 1px solid #b3b3b3;
+  padding: 18px 32px 8px 12px;
+  font-size: 16px;
+  font-family: 'Roboto', sans-serif;
+  color: #000000;
+  background-color: #ffffff;
+  outline: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+}
+
+/* Label flotante en selects */
+.campo-select label {
+  position: absolute;
+  left: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 16px;
+  color: #000000;
+  pointer-events: none;
+  transition: all 0.18s ease;
+}
+
+/* Iconos chevron por defecto: down negro */
+.campo-select .campo-control-select::after {
+  content: '';
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 16px;
+  height: 16px;
+  background-image: url('chevron-down-negro.svg');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+  pointer-events: none;
+}
+
+/* Borde en focus */
+.campo-select:focus-within select {
+  border-color: #787878;
+  border-width: 2px;
+}
+
+/* Label sube en focus */
+.campo-select:focus-within label {
+  top: 4px;
+  transform: translateY(0);
+  font-size: 13px;
+  color: #737373;
+}
+
+/* Label subida cuando hay valor */
+.campo-select.tiene-valor label {
+  top: 4px;
+  transform: translateY(0);
+  font-size: 13px;
+  color: #737373;
+}
+
+/* Select válido → borde verde + chevron OK */
+.campo-select.valid select {
+  border-color: #008000;
+  border-width: 2px;
+}
+
+.campo-select.valid .campo-control-select::after {
+  background-image: url('chevron-down-ok.svg');
+}
+
+/* Select activo/abierto → chevron up (manda sobre el OK) */
+.campo-select.abierto .campo-control-select::after {
+  background-image: url('chevron-up-negro.svg') !important;
+}
+
+/* Select inválido → borde rojo */
+.campo-select.invalid select {
+  border-color: #ff0000;
+  border-width: 2px;
+}
+
+/* Prefijo específico */
+.campo-prefijo {
+  width: 160px;
+  flex-shrink: 0;
+}
+
+.campo-prefijo select {
+  padding-left: 40px;
+}
+
+.prefijo-flag {
+  position: absolute;
+  left: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 18px;
+  pointer-events: none;
+  visibility: hidden;
+}
+
+.campo-prefijo.tiene-valor .prefijo-flag {
+  visibility: visible;
+}
+
+/* Teléfono */
+.campo-telefono {
+  flex: 1 1 auto;
+}
+
+/* Fila Prefijo + Teléfono */
+.fila-prefijo-telefono {
+  display: flex;
+  gap: 30px;
+}
+
+/* Selects ancho completo */
+.campo-pais,
+.campo-provincia,
+.campo-localidad,
+.campo-curso,
+.campo-titulacion {
+  width: 100%;
+}
+
+/* Campo Mi titulación de interés (pseudo-select) */
+.campo-titulacion .campo-control-select::after {
+  /* mismo sistema de iconos que el resto */
+}
+
+.pseudo-select-boton {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: 4px;
+  border: 1px solid #b3b3b3;
+  background-color: #ffffff;
+  padding: 18px 32px 8px 12px;
+  font-size: 16px;
+  font-family: 'Roboto', sans-serif;
+  color: #000000;
+  text-align: left;
+  cursor: pointer;
+}
+
+.pseudo-select-boton:focus-visible {
+  outline: none;
+}
+
+.pseudo-select-texto {
+  display: block;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.campo-titulacion:focus-within .pseudo-select-boton {
+  border-color: #787878;
+  border-width: 2px;
+}
+
+.campo-titulacion.valid .pseudo-select-boton {
+  border-color: #008000;
+  border-width: 2px;
+}
+
+.campo-titulacion.invalid .pseudo-select-boton {
+  border-color: #ff0000;
+  border-width: 2px;
+}
+
+/* 7. Toggle ON/OFF */
+.campo-toggle {
+  display: flex;
+}
+
+.toggle-wrapper {
+  display: inline-flex;
+  align-items: center;
+  position: relative;
+}
+
+.toggle-input {
+  position: absolute;
+  opacity: 0;
+  width: 40px;
+  height: 22px;
+  left: 0;
+  top: 0;
+}
+
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 40px;
+  height: 22px;
+  margin-right: 10px;
+  cursor: pointer;
+}
+
+.slider {
+  position: absolute;
+  inset: 0;
+  background-color: #cccccc;
+  border-radius: 999px;
+  transition: background-color 0.25s;
+}
+
+.slider::before {
+  content: "";
+  position: absolute;
+  width: 18px;
+  height: 18px;
+  left: 2px;
+  top: 2px;
+  background-color: #ffffff;
+  border-radius: 50%;
+  transition: transform 0.25s;
+}
+
+.toggle-input:checked + .switch .slider {
+  background-color: #008000;
+}
+
+.toggle-input:checked + .switch .slider::before {
+  transform: translateX(18px);
+}
+
+.texto-aviso {
+  font-size: 16px;
+}
+
+.texto-aviso a {
+  color: #000000;
+  text-decoration: underline;
+}
+
+/* Modales (aviso legal + titulación) */
+.modal {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background-color: rgba(115, 115, 115, 0.6);
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.modal-contenido {
+  background-color: #ffffff;
+  border-radius: 8px;
+  padding: 20px 24px;
+  position: relative;
+  max-width: 540px;
+  width: 100%;
+}
+
+.modal-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 16px;
+}
+
+.modal-header h2 {
+  margin: 0;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 700;
+  font-size: 20px;
+}
+
+.cerrar-modal,
+.cerrar-modal-titulacion {
+  border: none;
+  background: none;
+  font-size: 20px;
+  font-weight: 700;
+  cursor: pointer;
+  color: #000000;
+}
+
+/* Contenido aviso legal */
+.modal-cuerpo {
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+.modal-cuerpo p {
+  margin-top: 0;
+  margin-bottom: 12px;
+}
+
+.modal-cuerpo a {
+  color: #000000;
+  text-decoration: underline;
+}
+
+/* Contenido Mi titulación de interés */
+.modal-titulacion-contenido {
+  max-height: 80vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.modal-busqueda {
+  margin-bottom: 8px;
+}
+
+.buscador-input-wrapper {
+  position: relative;
+}
+
+.icono-buscar {
+  position: absolute;
+  left: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 14px;
+  color: #737373;
+}
+
+.buscador-input {
+  width: 100%;
+  padding: 8px 8px 8px 32px;
+  border-radius: 4px;
+  border: 1px solid #b3b3b3;
+  font-size: 14px;
+  font-family: 'Roboto', sans-serif;
+}
+
+.modal-lista-titulaciones {
+  margin-top: 8px;
+  padding-right: 4px;
+  overflow-y: auto;
+  max-height: 60vh;
+}
+
+/* Áreas y titulaciones */
+.area-titulaciones {
+  margin-bottom: 16px;
+}
+
+.area-titulo {
+  font-size: 14px;
+  font-weight: 700;
+  margin: 12px 0 4px 0;
+  padding-bottom: 4px;
+  border-bottom: 1px solid #b3b3b3;
+}
+
+.item-titulacion {
+  width: 100%;
+  text-align: left;
+  padding: 8px 0;
+  border: none;
+  background: none;
+  font-size: 14px;
+  font-family: 'Roboto', sans-serif;
+  cursor: pointer;
+}
+
+.item-titulacion:hover,
+.item-titulacion:focus-visible {
+  background-color: #f5f5f5;
+  outline: none;
+}
+
+/* Botón enviar */
+.boton-enviar {
+  width: 100%;
+  max-width: 540px;
+  height: 48px;
+  background-color: #EDEDED;   /* inactivo */
+  border: 1px solid #000000;
+  font-family: 'Roboto Condensed', sans-serif;
+  font-weight: 700;
+  font-size: 16px;
+  text-align: center;
+  cursor: not-allowed;
+  color: #000000;
+}
+
+.boton-enviar.boton-activo {
+  background-color: #000000;
+  color: #ffffff;
+  cursor: pointer;
+}
+
+.boton-enviar:disabled {
+  background-color: #EDEDED;
+  color: #000000;
+}
+
+/* Responsivo */
+@media (max-width: 600px) {
+  .contenedor-principal {
+    padding: 16px;
+  }
+
+  .fila-prefijo-telefono {
+    gap: 16px;
+  }
+
+  .campo-prefijo {
+    width: 140px;
+  }
+
+  .form-titulo {
+    font-size: 28px;
+  }
+
+  .form-subtitulo {
+    font-size: 16px;
+  }
+}
