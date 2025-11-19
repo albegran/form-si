@@ -159,7 +159,7 @@ body {
 }
 
 .campo.flotante.valid .icono-validacion {
-  background-image: url('ok-verde.svg'); /* ✔ SVG verde */
+  background-image: url('ok-verde.svg');
 }
 
 .campo.flotante.invalid input {
@@ -169,7 +169,7 @@ body {
 }
 
 .campo.flotante.invalid .icono-validacion {
-  background-image: url('ko-rojo.svg');  /* ✖ SVG rojo */
+  background-image: url('ko-rojo.svg');
 }
 
 /* Mensajes de error */
@@ -331,7 +331,7 @@ body {
 
 /* Campo Mi titulación de interés (pseudo-select) */
 .campo-titulacion .campo-control-select::after {
-  /* mismo sistema de iconos que el resto */
+  /* usa el mismo sistema de chevrons que el resto */
 }
 
 .pseudo-select-boton {
