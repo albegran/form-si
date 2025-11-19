@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Formulario de Solicitud</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- Tipografías Roboto / Roboto Condensed (incluye Light 300) -->
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&family=Roboto+Condensed:wght@700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+  <main class="contenedor-principal">
+    <form id="registroForm" class="formulario" aria-label="Formulario de solicitud" novalidate data-ga4-event="form_view">
+      <!-- Título y subtítulo -->
+      <h1 class="form-titulo">Solicitud de información de grado</h1>
+      <p class="form-subtitulo">
+        Selecciona tu titulación de interés y te enviaremos toda la información que necesitas.
+      </p>
+
+      <!-- 1. Tipo de perfil -->
+      <div class="campo campo-perfil">
+        <span class="campo-perfil-label">Soy…</span>
+        <div class="opciones-perfil" role="radiogroup" aria-label="Tipo de perfil">
+          <label class="opcion-perfil">
+            <input type="radio" name="perfil" value="estudiante" required data-ga4-event="perfil_estudiante">
+            <span>Estudiante</span>
+          </label>
+          <label class="opcion-perfil">
+            <input type="radio" name="perfil" value="padre_madre_tutor" data-ga4-event="perfil_padre_madre_tutor">
+            <span>Padre/Madre/Tutor</span>
+          </label>
+          <label class="opcion-perfil">
+            <input type="radio" name="perfil" value="profesor_orientador" data-ga4-event="perfil_profesor_orientador">
+            <span>Profesor/Orientador</span>
+          </label>
+        </div>
+      </div>
+
+      <!-- 2. Nombre -->
+      <div class="campo flotante campo-texto" data-tipo="nombre">
+        <div class="campo-control">
+          <input id="nombre" name="nombre" type="text" required minlength="2" placeholder=" " autocomplete="given-name" aria-required="true" aria-describedby="error-nombre" data-tipo-validacion="texto-min2" data-ga4-event="campo_nombre">
+          <label for="nombre">Nombre</label>
+          <span class="icono-validacion" aria-hidden="true"></span>
+        </div>
+        <small id="error-nombre" class="mensaje-error">Introduzca un nombre correcto</small>
+      </div>
+
+      <!-- 3.1 Apellidos -->
+      <div class="campo flotante campo-texto" data-tipo="apellidos">
+        <div class="campo-control">
+          <input id="apellidos" name="apellidos" type="text" required minlength="2" placeholder=" " autocomplete="family-name" aria-required="true" aria-describedby="error-apellidos" data-tipo-validacion="texto-min2" data-ga4-event="campo_apellidos">
+          <label for="apellidos">Apellidos</label>
+          <span class="icono-validacion" aria-hidden="true"></span>
+        </div>
+        <small id="error-apellidos" class="mensaje-error">Introduzca unos apellidos correctos</small>
+      </div>
+
+      <!-- 3.2 Email -->
+      <div class="campo flotante campo-texto" data-tipo="email">
+        <div class="campo-control">
+          <input id="email" name="email" type="email" required placeholder=" " autocomplete="email" aria-required="true" aria-describedby="error-email" data-tipo-validacion="email" data-ga4-event="campo_email">
+          <label for="email">Email</label>
+          <span class="icono-validacion" aria-hidden="true"></span>
+        </div>
+        <small id="error-email" class="mensaje-error">Introduzca un email correcto</small>
+      </div>
+
+      <!-- 4 + 5 Prefijo y Teléfono en la misma línea -->
+      <div class="fila-prefijo-telefono">
+        <!-- 4. Prefijo -->
+        <div class="campo campo-select campo-prefijo">
+          <div class="campo-control-select">
+            <span class="prefijo-flag" aria-hidden="true"></span>
+            <select id="prefijo" name="prefijo" required aria-required="true" aria-describedby="error-prefijo" data-ga4-event="select_prefijo">
+              <option value=""></option>
+              <option value="+34" data-flag="🇪🇸" data-prefix="+34" data-country="España">
+                🇪🇸 España +34
+              </option>
+              <option value="+33" data-flag="🇫🇷" data-prefix="+33" data-country="Francia">
+                🇫🇷 Francia +33
+              </option>
+              <option value="+39" data-flag="🇮🇹" data-prefix="+39" data-country="Italia">
+                🇮🇹 Italia +39
+              </option>
+              <option value="+49" data-flag="🇩🇪" data-prefix="+49" data-country="Alemania">
+                🇩🇪 Alemania +49
+              </option>
+              <option value="+44" data-flag="🇬🇧" data-prefix="+44" data-country="Reino Unido">
+                🇬🇧 Reino Unido +44
+              </option>
+              <option value="+1" data-flag="🇺🇸" data-prefix="+1" data-country="Estados Unidos">
+                🇺🇸 Estados Unidos +1
+              </option>
+              <option value="+52" data-flag="🇲🇽" data-prefix="+52" data-country="México">
+                🇲🇽 México +52
+              </option>
+              <option value="+55" data-flag="🇧🇷" data-prefix="+55" data-country="Brasil">
+                🇧🇷 Brasil +55
+              </option>
+              <option value="+81" data-flag="🇯🇵" data-prefix="+81" data-country="Japón">
+                🇯🇵 Japón +81
+              </option>
+              <option value="+61" data-flag="🇦🇺" data-prefix="+61" data-country="Australia">
+                🇦🇺 Australia +61
+              </option>
+            </select>
+            <label for="prefijo">Prefijo</label>
+          </div>
+          <small id="error-prefijo" class="mensaje-error">Seleccione un prefijo</small>
+        </div>
+
+        <!-- 5. Teléfono -->
+        <div class="campo flotante campo-texto campo-telefono" data-tipo="telefono">
+          <div class="campo-control">
+            <input id="telefono" name="telefono" type="text" required placeholder=" " autocomplete="tel" aria-required="true" aria-describedby="error-telefono" data-tipo-validacion="telefono" data-ga4-event="campo_telefono">
+            <label for="telefono">Teléfono</label>
+            <span class="icono-validacion" aria-hidden="true"></span>
+          </div>
+          <small id="error-telefono" class="mensaje-error">Introduzca un teléfono correcto</small>
+        </div>
+      </div>
+
+      <!-- 6. País del centro -->
+      <div class="campo campo-select campo-pais">
+        <div class="campo-control-select">
+          <select id="pais-centro" name="pais-centro" required aria-required="true" aria-describedby="error-pais-centro" data-ga4-event="select_pais_centro">
+            <option value=""></option>
+            <option>España</option>
+            <option>Francia</option>
+            <option>Italia</option>
+            <option>Alemania</option>
+            <option>Portugal</option>
+            <option>Reino Unido</option>
+            <option>México</option>
+            <option>Estados Unidos</option>
+            <option>Brasil</option>
+            <option>Argentina</option>
+            <option>Chile</option>
+            <option>Japón</option>
+            <option>China</option>
+            <option>Australia</option>
+            <option>Canadá</option>
+            <option>Colombia</option>
+            <option>Perú</option>
+            <option>India</option>
+            <option>Sudáfrica</option>
+            <option>Egipto</option>
+          </select>
+          <label for="pais-centro">País del centro en el que estudio</label>
+        </div>
+        <small id="error-pais-centro" class="mensaje-error">Seleccione un país</small>
+      </div>
+
+      <!-- Provincia del centro (oculta hasta elegir país) -->
+      <div class="campo campo-select campo-provincia" style="display:none;">
+        <div class="campo-control-select">
+          <select id="provincia-centro" name="provincia-centro" required aria-required="true" aria-describedby="error-provincia-centro" data-ga4-event="select_provincia_centro" disabled>
+            <option value=""></option>
+          </select>
+          <label for="provincia-centro">Provincia del centro en el que estudio</label>
+        </div>
+        <small id="error-provincia-centro" class="mensaje-error">Seleccione una provincia</small>
+      </div>
+
+      <!-- Localidad del centro (solo México + Estado de México) -->
+      <div class="campo campo-select campo-localidad" style="display:none;">
+        <div class="campo-control-select">
+          <select id="localidad-centro" name="localidad-centro" aria-required="false" aria-describedby="error-localidad-centro" data-ga4-event="select_localidad_centro">
+            <option value=""></option>
+          </select>
+          <label for="localidad-centro">Localidad del centro en el que estudio</label>
+        </div>
+        <small id="error-localidad-centro" class="mensaje-error">Seleccione una localidad</small>
+      </div>
+
+      <!-- Curso en el que iniciar estudios de grado -->
+      <div class="campo campo-select campo-curso">
+        <div class="campo-control-select">
+          <select id="curso-inicio" name="curso-inicio" required aria-required="true" aria-describedby="error-curso-inicio" data-ga4-event="select_curso_inicio">
+            <option value=""></option>
+            <option>Septiembre 2026</option>
+            <option>Septiembre 2027</option>
+            <option>Septiembre 2028</option>
+            <option>No lo sé</option>
+          </select>
+          <label for="curso-inicio">Curso en el que quiero iniciar mis estudios de grado</label>
+        </div>
+        <small id="error-curso-inicio" class="mensaje-error">Seleccione una opción</small>
+      </div>
+
+      <!-- Campo Mi titulación de interés -->
+      <div class="campo campo-select campo-titulacion">
+        <div class="campo-control-select">
+          <button type="button" id="titulacion-trigger" class="pseudo-select-boton" aria-haspopup="dialog" aria-expanded="false" aria-controls="modal-titulacion">
+            <span class="pseudo-select-texto"></span>
+          </button>
+          <label for="titulacion-trigger">Mi titulación de interés</label>
+        </div>
+        <input type="hidden" id="titulacion-interes" name="titulacion-interes" required aria-required="true" aria-invalid="false" aria-describedby="error-titulacion" data-ga4-event="select_titulacion_interes">
+        <small id="error-titulacion" class="mensaje-error">Seleccione una titulación</small>
+      </div>
+
+      <!-- 7. Toggle aviso legal -->
+      <div class="campo campo-toggle">
+        <div class="toggle-wrapper">
+          <input type="checkbox" id="aviso" class="toggle-input" data-ga4-event="toggle_aviso_legal" aria-describedby="texto-aviso-legal">
+          <label for="aviso" class="switch" aria-label="Aceptar aviso legal">
+            <span class="slider"></span>
+          </label>
+          <span id="texto-aviso-legal" class="texto-aviso">
+            He leído y acepto el
+            <a href="#" id="enlace-aviso">aviso legal</a>
+          </span>
+        </div>
+      </div>
+
+      <!-- Modal Mi titulación de interés -->
+      <div id="modal-titulacion" class="modal" role="dialog" aria-modal="true" aria-labelledby="modal-titulacion-titulo" aria-hidden="true">
+        <div class="modal-contenido modal-titulacion-contenido">
+          <div class="modal-header">
+            <h2 id="modal-titulacion-titulo" tabindex="-1">Mi titulación de interés</h2>
+            <button type="button" class="cerrar-modal-titulacion" aria-label="Cerrar selección de titulación">
+              X
+            </button>
+          </div>
+
+          <div class="modal-busqueda">
+            <div class="buscador-input-wrapper">
+              <span class="icono-buscar" aria-hidden="true">🔍</span>
+              <input type="text" id="filtro-titulaciones" class="buscador-input" placeholder="filtrar por nombre de titulación" aria-label="Filtrar por nombre de titulación">
+            </div>
+          </div>
+
+          <div class="modal-lista-titulaciones" id="lista-titulaciones">
+            <!-- Se rellena dinámicamente desde JS -->
+          </div>
+        </div>
+      </div>
+
+      <!-- Modal aviso legal -->
+      <div id="modal-aviso" class="modal" role="dialog" aria-modal="true" aria-labelledby="modal-aviso-titulo" aria-hidden="true">
+        <div class="modal-contenido">
+          <div class="modal-header">
+            <h2 id="modal-aviso-titulo" tabindex="-1">Aviso legal</h2>
+            <button type="button" class="cerrar-modal" aria-label="Cerrar aviso legal">
+              X
+            </button>
+          </div>
+          <div class="modal-cuerpo">
+            <p>
+              Al completar el proceso de registro das tu consentimiento para que la Universidad de Navarra te envíe información, mientras sigas teniendo interés, sobre su oferta académica y las actividades que realiza para ayudarte a decidir qué estudiar, incluyendo el envío de comunicaciones electrónicas por e-mail y WhatsApp.
+            </p>
+            <p>
+              Cuando lo desees podrás acceder, actualizar y suprimir tus datos y comunicar que no quieres recibir más envíos, así como ejercer otros derechos que se explican en
+              <a href="https://www.unav.edu/proteccion-de-datos" target="_blank" rel="noopener noreferrer">
+                https://www.unav.edu/proteccion-de-datos
+              </a>,
+              donde puedes obtener más información sobre la política de privacidad de la Universidad de Navarra.
+            </p>
+            <p>
+              Si deseas alguna aclaración o ejercer tus derechos, por favor, contacta por e-mail con
+              <a href="mailto:dpo@unav.es">dpo@unav.es</a>,
+              indicando en el texto del mensaje “Registro en miUNAV”.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- 8. Botón enviar -->
+      <button type="submit" class="boton-enviar" data-ga4-event="enviar_solicitud" disabled>
+        ENVIAR MI SOLICITUD
+      </button>
+    </form>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+
+</html>
