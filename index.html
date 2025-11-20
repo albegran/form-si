@@ -127,34 +127,10 @@
 
       <!-- 4 + 5 Prefijo y Teléfono en la misma línea -->
       <div class="fila-prefijo-telefono">
-        <!-- 4. Prefijo (custom dropdown con máx. 7 visibles) -->
-        <div class="campo campo-select campo-prefijo campo-select-custom">
+        <!-- 4. Prefijo -->
+        <div class="campo campo-select campo-prefijo">
           <div class="campo-control-select">
             <span class="prefijo-flag" aria-hidden="true"></span>
-
-            <button
-              type="button"
-              id="prefijo-trigger"
-              class="pseudo-select-boton"
-              aria-haspopup="listbox"
-              aria-expanded="false"
-              aria-controls="lista-prefijo"
-            >
-              <span class="pseudo-select-texto"></span>
-            </button>
-
-            <label for="prefijo-trigger">Prefijo</label>
-
-            <div
-              id="lista-prefijo"
-              class="lista-desplegable"
-              role="listbox"
-              aria-labelledby="prefijo-trigger"
-            >
-              <!-- Opciones generadas desde JS a partir del <select> oculto -->
-            </div>
-
-            <!-- Select real (oculto) para envío y GA4 -->
             <select
               id="prefijo"
               name="prefijo"
@@ -162,7 +138,7 @@
               aria-required="true"
               aria-describedby="error-prefijo"
               data-ga4-event="select_prefijo"
-              hidden
+              class="select-scroll-7"
             >
               <option value=""></option>
               <option value="+34" data-flag="🇪🇸" data-prefix="+34" data-country="España">
@@ -196,6 +172,7 @@
                 🇦🇺 Australia +61
               </option>
             </select>
+            <label for="prefijo">Prefijo</label>
           </div>
           <small id="error-prefijo" class="mensaje-error">Seleccione un prefijo</small>
         </div>
@@ -222,29 +199,9 @@
         </div>
       </div>
 
-      <!-- 6. País del centro (custom dropdown con máx. 7 visibles) -->
-      <div class="campo campo-select campo-pais campo-select-custom">
+      <!-- 6. País del centro -->
+      <div class="campo campo-select campo-pais">
         <div class="campo-control-select">
-          <button
-            type="button"
-            id="pais-trigger"
-            class="pseudo-select-boton"
-            aria-haspopup="listbox"
-            aria-expanded="false"
-            aria-controls="lista-pais"
-          >
-            <span class="pseudo-select-texto"></span>
-          </button>
-          <label for="pais-trigger">País del centro en el que estudio</label>
-
-          <div
-            id="lista-pais"
-            class="lista-desplegable"
-            role="listbox"
-            aria-labelledby="pais-trigger"
-          ></div>
-
-          <!-- Select real (oculto) para lógica y envío -->
           <select
             id="pais-centro"
             name="pais-centro"
@@ -252,7 +209,7 @@
             aria-required="true"
             aria-describedby="error-pais-centro"
             data-ga4-event="select_pais_centro"
-            hidden
+            class="select-scroll-7"
           >
             <option value=""></option>
             <option>España</option>
@@ -276,6 +233,7 @@
             <option>Sudáfrica</option>
             <option>Egipto</option>
           </select>
+          <label for="pais-centro">País del centro en el que estudio</label>
         </div>
         <small id="error-pais-centro" class="mensaje-error">Seleccione un país</small>
       </div>
