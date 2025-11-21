@@ -420,6 +420,7 @@ const areasTitulaciones = [
       'Grado en Enfermería',
       'Grado en Medicina',
       'Grado en Química',
+      'Grado en Bioquímica',
       'Doble Grado Administración y Dirección de Empresas',
       'Grado en Nutrición Humana y Dietética',
       'Grado en Ciencias Ambientales'
@@ -428,6 +429,9 @@ const areasTitulaciones = [
   {
     nombre: 'Área de ciencias sociales',
     titulaciones: [
+      'Grado en Comunicación Corporativa',
+      'Grado en Periodismo',
+      'Grado en Comunicación Audiovisual',
       'Grado en Marketing',
       'Grado en Derecho',
       'Grado en Filosofía, Política y Economía (Philosophy, Politics and Economics)',
@@ -437,8 +441,15 @@ const areasTitulaciones = [
   {
     nombre: 'Área de ingeniería y arquitectura',
     titulaciones: [
-      'Grado en Ingeniería Informática',
-      'Grado en Ingeniería Industrial'
+      'Grado en Ingeniería en Inteligencia Artificial',
+      'Grado en Ingeniería de Tecnologías Industriales',
+      'Grado en Ingeniería Biomédica',
+      'Grado en Ingeniería Mecánica',
+      'Grado en Ingeniería en Electrónica Industrial',
+      'Grado en Ingeniería en Sistema de Telecomunicación',
+      'Grado en Ingeniería en Organización Industrial',
+      'Grado en Ingeniería en Diseño Industrial y Desarrollo de Productos',
+      'Grado en Ingeniería Eléctrica',
     ]
   }
 ];
